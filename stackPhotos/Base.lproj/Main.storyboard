@@ -56,7 +56,6 @@
                     <connections>
                         <outlet property="addButton" destination="EvD-ys-Z3O" id="2Fz-8w-d1f"/>
                         <outlet property="deleteButton" destination="RK8-5L-O4B" id="fpG-f9-6d4"/>
-                        <outlet property="photosView" destination="Lv0-1V-m1i" id="iIk-Fo-B3e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

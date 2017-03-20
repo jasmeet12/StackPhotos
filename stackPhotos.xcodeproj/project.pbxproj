@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D5F2FB61E7F37AB00DE376B /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5F2FB51E7F37AB00DE376B /* PhotoView.swift */; };
 		5D9D8D991E720C140088FD7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D8D981E720C140088FD7D /* AppDelegate.swift */; };
 		5D9D8D9B1E720C140088FD7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D9D8D9A1E720C140088FD7D /* ViewController.swift */; };
 		5D9D8D9E1E720C140088FD7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D9D8D9C1E720C140088FD7D /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D5F2FB51E7F37AB00DE376B /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		5D9D8D951E720C140088FD7D /* stackPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stackPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D9D8D981E720C140088FD7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D9D8D9A1E720C140088FD7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				5D9D8D981E720C140088FD7D /* AppDelegate.swift */,
 				5D9D8D9A1E720C140088FD7D /* ViewController.swift */,
+				5D5F2FB51E7F37AB00DE376B /* PhotoView.swift */,
 				5D9D8D9C1E720C140088FD7D /* Main.storyboard */,
 				5D9D8D9F1E720C140088FD7D /* Assets.xcassets */,
 				5D9D8DA11E720C140088FD7D /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D5F2FB61E7F37AB00DE376B /* PhotoView.swift in Sources */,
 				5D9D8D9B1E720C140088FD7D /* ViewController.swift in Sources */,
 				5D9D8D991E720C140088FD7D /* AppDelegate.swift in Sources */,
 			);
@@ -510,6 +514,7 @@
 				5D9D8DBF1E720C150088FD7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D9D8DC01E720C150088FD7D /* Build configuration list for PBXNativeTarget "stackPhotosTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +523,7 @@
 				5D9D8DC21E720C150088FD7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D9D8DC31E720C150088FD7D /* Build configuration list for PBXNativeTarget "stackPhotosUITests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +532,7 @@
 				5D9D8DC51E720C150088FD7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
