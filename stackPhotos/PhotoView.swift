@@ -18,8 +18,9 @@ class PhotoView: UIView {
     }
     */
     
-    static var cornerRadius:CGFloat = 20.0
-    static var rotaionAngle:CGFloat = 10.0
+    var cornerRadius:CGFloat = 15.0
+    var rotaionAngle:CGFloat = 5.0
+    var speedofFlick:Double = 5.0
 
     static var isBorderShow:Bool = false
     
@@ -48,7 +49,7 @@ class PhotoView: UIView {
         
         addPanGesture(view:view)
         view.layer.masksToBounds = true
-        view.layer.cornerRadius = 15.0
+        view.layer.cornerRadius = self.cornerRadius
         
         
       
@@ -59,13 +60,13 @@ class PhotoView: UIView {
     }
     
     func updateUI(){
-         var currentAngle = 0
+        var currentAngle:CGFloat = 0.0
         if(photos.count > 1){
             for var i in 1 ..< photos.count{
                 
                 let imageView = photos[photos.count-i-1]
                 
-                var angle = 0
+                var angle:Float = 0.0
                 
                 if (i%3 == 0)
                 {
@@ -77,15 +78,15 @@ class PhotoView: UIView {
                 }
                 else if (i%2 == 0){
                     
-                    angle = currentAngle + 350
+                    angle = Float(currentAngle) + 360.0 - Float(2*rotaionAngle)
                 }
                 else{
                     
-                    angle = currentAngle + 5
+                    angle = Float(currentAngle) + Float(rotaionAngle)
                 }
                 
                 
-                currentAngle = angle
+                currentAngle = CGFloat(angle)
                 
                 
                 
@@ -125,8 +126,9 @@ class PhotoView: UIView {
             let x = CGFloat((gestureRecognizer.view!.superview!.frame.size.width )/2)
             let y = CGFloat((gestureRecognizer.view!.superview!.frame.size.height )/2)
             
+            let duration = speedofFlick/10
             
-            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseOut], animations: {
+            UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut], animations: {
                 // gestureRecognizer.view!.alpha = 0
                 gestureRecognizer.view!.superview?.sendSubview(toBack: gestureRecognizer.view!)
                 gestureRecognizer.view!.center =  CGPoint(x: x, y:y)
