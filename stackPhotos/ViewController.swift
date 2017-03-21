@@ -21,6 +21,8 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.configPhotoView()
+        
             }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +47,7 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
         photosView.initWithPhotos(images: images as! [UIImage])
 
         
+        // <.....Optional Properties to set .....>
         // can set corder radius of photos default is 15.0
         photosView.cornerRadius = 15.0
         
@@ -54,6 +57,13 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
         //can set spped of flick defult is 5.0
         photosView.speedofFlick = 5.0
     
+        // can restrict Vertical Move by setting allVeriticalMove property
+        photosView.allowVerticalMove = true
+        
+        // can restrict Vertical Move by setting allHorizontalMove property
+        photosView.allowHorizontalMove = true
+        
+        //<...... Optional Properties End .....>
         
     
     }

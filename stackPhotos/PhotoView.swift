@@ -9,20 +9,23 @@
 import UIKit
 
 class PhotoView: UIView {
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
     
     var cornerRadius:CGFloat = 15.0
     var rotaionAngle:CGFloat = 5.0
     var speedofFlick:Double = 5.0
-
-    static var isBorderShow:Bool = false
+    
+    var allowVerticalMove = true
+    var allowHorizontalMove = true
+    
+    
     
     var photos:[UIImageView]=[]
     
@@ -37,8 +40,8 @@ class PhotoView: UIView {
     }
     
     func insertPhoto(image:UIImage){
-    
-    var view = UIImageView()
+        
+        var view = UIImageView()
         let size = getPhotoViewSize(image: image, size: CGSize(width:self.frame.size.width,height:self.frame.size.height))
         
         let x = CGFloat((self.frame.size.width - size.width)/2)
@@ -52,7 +55,7 @@ class PhotoView: UIView {
         view.layer.cornerRadius = self.cornerRadius
         
         
-      
+        
         self.photos.append(view)
         self.addSubview(view)
         
@@ -102,7 +105,9 @@ class PhotoView: UIView {
         
         
     }
-
+    
+    //MARK: function to add Pan Gesture
+    
     
     func addPanGesture(view:UIImageView){
         
@@ -113,76 +118,92 @@ class PhotoView: UIView {
     }
     
     
+    //MARK : function to handle Pan
     func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
+        
+        var moved = CGPoint(x:0,y:0)
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             
             let translation = gestureRecognizer.translation(in: self)
+            
             // note: 'view' is optional and need to be unwrapped
             gestureRecognizer.view!.center = CGPoint(x: gestureRecognizer.view!.center.x + translation.x, y: gestureRecognizer.view!.center.y + translation.y)
             gestureRecognizer.setTranslation(CGPoint.zero, in: self)
         }
         else if gestureRecognizer.state == .ended{
             
+            
+            
+            
             let x = CGFloat((gestureRecognizer.view!.superview!.frame.size.width )/2)
             let y = CGFloat((gestureRecognizer.view!.superview!.frame.size.height )/2)
             
             let duration = speedofFlick/10
+            let velocity = gestureRecognizer.velocity(in: self)
             
             UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseOut], animations: {
-                // gestureRecognizer.view!.alpha = 0
-                gestureRecognizer.view!.superview?.sendSubview(toBack: gestureRecognizer.view!)
+                
+                if((abs(velocity.x) > 200.0  && self.allowHorizontalMove) || (abs(velocity.y) > 200.0 && self.allowVerticalMove)){
+                    gestureRecognizer.view!.superview?.sendSubview(toBack: gestureRecognizer.view!)
+                }
                 gestureRecognizer.view!.center =  CGPoint(x: x, y:y)
             }, completion: { _ in
                 
-                self.photos.insert(self.photos.last!, at: 0)
-                self.photos.remove(at: self.photos.count-1)
-                let imageView = self.photos.last!
-                
-                
-                let radians = atan2f(Float(Double(imageView.transform.b)), Float(Double(imageView.transform.a)));
-                let degrees = radians * Float(180 / M_PI);
-                
-                self.updateUI()
-                
-                imageView.rotate(angle: CGFloat(360 - degrees) )
-                
+                if((abs(velocity.x) > 200.0  && self.allowHorizontalMove) || (abs(velocity.y) > 200.0 && self.allowVerticalMove)){
+                    self.photos.insert(self.photos.last!, at: 0)
+                    self.photos.remove(at: self.photos.count-1)
+                    let imageView = self.photos.last!
+                    
+                    
+                    let radians = atan2f(Float(Double(imageView.transform.b)), Float(Double(imageView.transform.a)));
+                    let degrees = radians * Float(180 / M_PI);
+                    
+                    self.updateUI()
+                    
+                    imageView.rotate(angle: CGFloat(360 - degrees) )
+                }
                 
                 
             })
             
             
-           
+            
             
             
         }
     }
-
+    
     
     
     func removePhoto(){
-    
-    
-    
-    }
-    
-  func  initWithPhotos(images:[UIImage]){
-    
-    
-    for view in self.subviews{
-    
-    view.removeFromSuperview()
         
-    }
-    
-    for image in images{
-    
-    self.insertPhoto(image: image)
-    }
         
         
     }
     
+    // MARK: function to init PhotoView with Array of Images
+    
+    func  initWithPhotos(images:[UIImage]){
+        
+        
+        for view in self.subviews{
+            
+            view.removeFromSuperview()
+            
+        }
+        
+        for image in images{
+            
+            self.insertPhoto(image: image)
+        }
+        
+        
+    }
+    
+    
+    // MARK: function used to get the size of imageview according to image aspect ratio.
     func getPhotoViewSize(image:UIImage,size:CGSize)->CGSize{
+        
         
         var width = image.size.width
         var height = image.size.height
@@ -190,7 +211,7 @@ class PhotoView: UIView {
         
         
         let photoHeight = size.height
-        let photoWidth = size.width 
+        let photoWidth = size.width
         if(width > height){
             
             
@@ -219,7 +240,7 @@ class PhotoView: UIView {
         
         
     }
-
+    
     
 }
 
