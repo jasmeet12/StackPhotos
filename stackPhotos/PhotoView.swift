@@ -121,7 +121,6 @@ class PhotoView: UIView {
     //MARK : function to handle Pan
     func handlePan(_ gestureRecognizer: UIPanGestureRecognizer) {
         
-        var moved = CGPoint(x:0,y:0)
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
             
             let translation = gestureRecognizer.translation(in: self)
@@ -155,12 +154,10 @@ class PhotoView: UIView {
                     let imageView = self.photos.last!
                     
                     
-                    let radians = atan2f(Float(Double(imageView.transform.b)), Float(Double(imageView.transform.a)));
-                    let degrees = radians * Float(180 / M_PI);
+                    self.rotateTopImage()
                     
                     self.updateUI()
                     
-                    imageView.rotate(angle: CGFloat(360 - degrees) )
                 }
                 
                 
@@ -174,13 +171,36 @@ class PhotoView: UIView {
     }
     
     
-    
-    func removePhoto(){
+    func removePhotoFromTop(){
         
+        
+        if(self.photos.count > 0){
+            self.photos.last?.removeFromSuperview()
+            self.photos.removeLast()
+            if(self.photos.count>0){
+                self.rotateTopImage()
+                self.updateUI()
+            }
+            
+            
+        }
         
         
     }
     
+    func rotateTopImage(){
+        
+        let radians = atan2f(Float(Double(self.photos.last!.transform.b)), Float(Double((self.photos.last?.transform.a)!)));
+        let degrees = radians * Float(180 / M_PI);
+        
+        
+        
+        self.photos.last?.rotate(angle: CGFloat(360 - degrees) )
+        
+        
+    }
+    
+      
     // MARK: function to init PhotoView with Array of Images
     
     func  initWithPhotos(images:[UIImage]){

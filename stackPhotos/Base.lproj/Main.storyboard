@@ -33,7 +33,7 @@
                                 <rect key="frame" x="16" y="617" width="89" height="30"/>
                                 <state key="normal" title="Delete Photo"/>
                                 <connections>
-                                    <action selector="deletePhotoWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z1G-BB-KTJ"/>
+                                    <action selector="deletePhotoWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sD9-Ur-qfn"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lv0-1V-m1i">

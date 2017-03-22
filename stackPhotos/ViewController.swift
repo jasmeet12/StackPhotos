@@ -69,6 +69,13 @@ class ViewController: UIViewController,UINavigationControllerDelegate,UIImagePic
     }
     
     
+    @IBAction func deletePhoto(sender:UIButton){
+        
+        photosView.removePhotoFromTop()
+    
+    
+    }
+    
     @IBAction func addPhoto(sender:UIButton){
     
         
