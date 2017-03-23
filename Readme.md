@@ -32,16 +32,12 @@ let photosView = PhotoView.init(frame: CGRect(x:(self.view.frame.size.width-300)
 
 # Optional Properties to customise the PhotoView
 
-
-    **Property to Set the Corner Radius of PhotoView By Default it is 15.0**
-      
-      photosView.cornerRadius = 15.0
-      
-   **Property to Set the Rotation Angle of photos default in -5.0 to 5.0**
+   
+  **Property to Set the Rotation Angle of photos default in -5.0 to 5.0**
       
       photosView.rotaionAngle = 5.0
       
-   **Property to Set the speed of Flick by default is 5.0**
+  **Property to Set the speed of Flick by default is 5.0**
       
       photosView.speedofFlick = 5.0
       
@@ -49,6 +45,10 @@ let photosView = PhotoView.init(frame: CGRect(x:(self.view.frame.size.width-300)
       
       photosView.allowVerticalMove = true
       
-   **Property to Restrict Horizontal Move by default it is true**
+  **Property to Restrict Horizontal Move by default it is true**
       
       photosView.allowHorizontalMove = true
+      
+  **Property to Set the Corner Radius of PhotoView By Default it is 15.0**
+      
+      photosView.cornerRadius = 15.0
