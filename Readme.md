@@ -18,19 +18,19 @@ Create PhotoView Object by calling PhotoView.init method and pass the frame.
 
     let photosView = PhotoView.init(frame: CGRect(x:(self.view.frame.size.width-300)/2,y:(self.view.frame.size.height-        300)/2,width:300,height:300))
 
- # Method to Initialise the photoview with Images
+ ### Method to Initialise the photoview with Images
 
      photosView.initWithPhotos(images: images as! [UIImage])
   
- # Method to insert photo to PhotoView
+ ### Method to insert photo to PhotoView
  
     photosView.insertPhoto(image: image)
 
-# Method to remove top Photo
+ ### Method to remove top Photo
 
     photosView.removePhotoFromTop()
 
-# Optional Properties to customise the PhotoView
+ ### Optional Properties to customise the PhotoView
 
    
   **Property to Set the Rotation Angle of photos default in -5.0 to 5.0**
