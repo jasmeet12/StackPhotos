@@ -16,19 +16,19 @@ Download the source code and copy PhotoView.swift to your project.
 
 Create PhotoView Object by calling PhotoView.init method and pass the frame.
 
-let photosView = PhotoView.init(frame: CGRect(x:(self.view.frame.size.width-300)/2,y:(self.view.frame.size.height-300)/2,width:300,height:300))
+    let photosView = PhotoView.init(frame: CGRect(x:(self.view.frame.size.width-300)/2,y:(self.view.frame.size.height-        300)/2,width:300,height:300))
 
  # Method to Initialise the photoview with Images
 
-  photosView.initWithPhotos(images: images as! [UIImage])
+     photosView.initWithPhotos(images: images as! [UIImage])
   
  # Method to insert photo to PhotoView
  
-  photosView.insertPhoto(image: image)
+    photosView.insertPhoto(image: image)
 
 # Method to remove top Photo
 
-  photosView.removePhotoFromTop()
+    photosView.removePhotoFromTop()
 
 # Optional Properties to customise the PhotoView
 
